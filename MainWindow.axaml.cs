@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
@@ -7,6 +8,7 @@ namespace minutnik;
 
 public partial class MainWindow : Window
 {
+    private readonly List<string> _history = new();
     private readonly DispatcherTimer _timer;
     private TimeSpan _remainingTime;
     private bool _isRunning;
@@ -97,6 +99,7 @@ public partial class MainWindow : Window
             {
                 _cycles++;
                 CyclesTextBlock.Text = _cycles.ToString();
+                _history.Add($"{DateTime.Now:HH:mm} — cykl {_cycles}"); HistoryList.ItemsSource = _history.ToArray();
                 _isWorkSession = false;
                 ResetToCurrentSession();
                 StartTimer();
