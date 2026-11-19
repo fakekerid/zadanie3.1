@@ -2,8 +2,31 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="500"
+        Width="400" Height="500"
         x:Class="minutnik.MainWindow"
-        Title="minutnik">
-    Welcome to Avalonia!
+        Title="Minutnik">
+    <StackPanel Margin="24" Spacing="16" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Name="StatusTextBlock" Text="Stan: Praca" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" />
+        
+        <TextBlock Name="TimerTextBlock" Text="25:00" FontSize="54" FontWeight="Bold" HorizontalAlignment="Center" />
+        
+        <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Center">
+            <TextBlock Text="Ukończone cykle:" FontSize="16" VerticalAlignment="Center" />
+            <TextBlock Name="CyclesTextBlock" Text="0" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" />
+        </StackPanel>
+
+        <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto" Margin="0,8,0,8">
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Czas pracy (min):" VerticalAlignment="Center" Margin="0,0,12,10" />
+            <TextBox Grid.Row="0" Grid.Column="1" Name="WorkTimeTextBox" Text="25" Width="100" HorizontalAlignment="Left" Margin="0,0,0,10" />
+            
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Czas przerwy (min):" VerticalAlignment="Center" Margin="0,0,12,0" />
+            <TextBox Grid.Row="1" Grid.Column="1" Name="BreakTimeTextBox" Text="5" Width="100" HorizontalAlignment="Left" />
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" Spacing="16" HorizontalAlignment="Center">
+            <Button Name="StartPauseButton" Content="Start" Width="110" HorizontalContentAlignment="Center" Click="StartPauseButton_Click" />
+            <Button Name="ResetButton" Content="Reset" Width="110" HorizontalContentAlignment="Center" Click="ResetButton_Click" />
+        </StackPanel>
+    </StackPanel>
 </Window>
